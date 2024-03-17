@@ -1,7 +1,7 @@
 import random
 
 def choose():
-    words = ["Apple", "Banana", "Cherry", "Date", "Elderberry", "Fig", "Grape", "Kiwi", "Lemon", "Mango"]
+    words = ["apple", "banana", "cherry", "date", "elderberry", "fig", "grape", "kiwi", "lemon", "mango"]
     return random.choice(words)
 
 def display(word, guessed):
@@ -13,7 +13,87 @@ def display(word, guessed):
             display_word += "_"
     return display_word
 
-def hangman():
+def draw(tries):
+    stages = [  
+                """
+                   --------
+                   |      |
+                   |      
+                   |    
+                   |      
+                   |     
+                   -
+                """
+        ,
+                
+                """
+                   --------
+                   |      |
+                   |      O
+                   |    
+                   |      
+                   |     
+                   -
+                """
+        ,
+                
+                """
+                   --------
+                   |      |
+                   |      O
+                   |      |
+                   |      |
+                   |     
+                   -
+                """
+        ,
+                
+                """
+                   --------
+                   |      |
+                   |      O
+                   |     \|
+                   |      |
+                   |     
+                   -
+                """
+        ,
+                
+                """
+                   --------
+                   |      |
+                   |      O
+                   |     \|/
+                   |      |
+                   |      
+                   -
+                """
+        ,
+                
+                """
+                   --------
+                   |      |
+                   |      O
+                   |     \|/
+                   |      |
+                   |     / 
+                   -
+                """
+        ,
+               
+                """
+                   --------
+                   |      |
+                   |      O
+                   |     \|/
+                   |      |
+                   |     / \
+                   -
+                """
+    ]
+    return stages[tries]
+
+def play():
     word = choose()
     guessed_letters = []
     tries = 6
@@ -22,8 +102,9 @@ def hangman():
     print("Try to guess the word. You have 6 tries.")
 
     while tries > 0:
+        print(draw(6 - tries))
         print("\n" + display(word, guessed_letters))
-        guess = input("Enter a letter: ")
+        guess = input("Enter a letter: ").lower()
 
         if len(guess) != 1 or not guess.isalpha():
             print("Please enter a single letter.")
@@ -39,6 +120,7 @@ def hangman():
             tries -= 1
             print("Incorrect! You have {} tries left.".format(tries))
             if tries == 0:
+                print(draw(6 - tries))
                 print("Sorry, you ran out of tries. The word was '{}'.".format(word))
                 break
         else:
@@ -46,4 +128,12 @@ def hangman():
                 print("Congratulations! You guessed the word '{}'!".format(word))
                 break
 
-hangman()
+    play_again = input("Do you want to play again? (yes/no): ").lower()
+    if play_again == "yes":
+        play()
+    else:
+        print("Thanks for playing!")
+
+play()
+
+
