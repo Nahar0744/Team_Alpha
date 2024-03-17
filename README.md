@@ -41,3 +41,12 @@ Provide basic documentation within the code to explain the purpose of each funct
 
 Developer-
 The code has been pushed
+
+
+Tester-
+
+1. no option to play again
+
+2. the code is not working if the word chosen is not uppercase or lowercase only
+
+3. hangman pics is not coming 
