@@ -37,3 +37,7 @@ Debug any issues or bugs that arise during testing.
 
 Step 8-Documentation:
 Provide basic documentation within the code to explain the purpose of each function and how to run the game.
+
+
+Developer-
+The code has been pushed
